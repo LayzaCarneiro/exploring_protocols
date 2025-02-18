@@ -14,17 +14,17 @@ info = ServiceInfo(
     service_name,
     addresses=[socket.inet_aton(local_ip)],
     port=port,
-    properties={"version": "1.0", "description": "Meu servidor web"},
+    properties={"version": "1.0", "description": "My web server"},
     server=hostname + ".local."
 )
 
 # Publicar o serviço na rede
 zeroconf = Zeroconf()
 zeroconf.register_service(info)
-print(f"Serviço anunciado: {service_name} rodando em {local_ip}:{port}")
+print(f"Service announced: {service_name} running in {local_ip}:{port}")
 
 try:
-    input("Pressione Enter para parar...\n")
+    input("Press Enter to stop...\n")
 finally:
     zeroconf.unregister_service(info)
     zeroconf.close()

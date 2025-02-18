@@ -40,13 +40,13 @@ info = ServiceInfo(
 # Anunciar o serviço na rede
 zeroconf = Zeroconf()
 zeroconf.register_service(info)
-print(f"Serviço anunciado: {SERVICE_NAME} rodando em {local_ip}:{PORT}")
-print("Pressione Ctrl+C para parar o serviço.")
+print(f"Service announced: {SERVICE_NAME} running in {local_ip}:{PORT}")
+print("Press Ctrl+C to stop the service.")
 
 try:
     while True:
         pass  # Mantém o serviço ativo
 except KeyboardInterrupt:
-    print("Desregistrando serviço...")
+    print("Unregistering service...")
     zeroconf.unregister_service(info)
     zeroconf.close()
