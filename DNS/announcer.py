@@ -1,14 +1,12 @@
 from zeroconf import Zeroconf, ServiceInfo
 import socket
 
-# Configurar informações do serviço
 service_name = "MyWebServer._http._tcp.local."
 service_type = "_http._tcp.local."
 port = 8080
 hostname = socket.gethostname()
 local_ip = socket.gethostbyname(hostname)
 
-# Criar registro do serviço
 info = ServiceInfo(
     service_type,
     service_name,
@@ -18,7 +16,6 @@ info = ServiceInfo(
     server=hostname + ".local."
 )
 
-# Publicar o serviço na rede
 zeroconf = Zeroconf()
 zeroconf.register_service(info)
 print(f"Service announced: {service_name} running in {local_ip}:{port}")
